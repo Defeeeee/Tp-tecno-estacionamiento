@@ -17,16 +17,16 @@ void loop() {
     servo1.write(90);
     luz_auto1.encender(VERDE);
     delay(10000);
-    servo1.write(0);
+    servo2.write(90);
     luz_auto1.apagar(VERDE);
 
     luz_auto4.encender(ROJO);
     delay(5000);
     luz_auto4.apagar(ROJO);    
 
-    servo1.write(90);
+    servo1.write(0);
     luz_auto4.encender(VERDE);
     delay(10000);
-    servo1.write(180);
+    servo2.write(180);
     luz_auto4.apagar(VERDE);    
 }

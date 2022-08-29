@@ -1,9 +1,18 @@
 #include <LibEstacionamiento.h>
+#include <Servo.h>
+
+Servo servo1;
+Servo servo2;
+
 int i;
 void setup()
 {
     Serial.begin(9600);
     inicializar_sistema();
+    servo1.attach(9);
+    servo2.attach(10);
+    servo1.write(90);
+    servo2.write(110);
 }
 
 void loop()
@@ -13,10 +22,10 @@ void loop()
     if (numero_ingresado == 9421)
     {
         mostrar_cartel("Clave Correcta \n");
-        for (i = 1; 1 < 4; ++i)
+        for (i = 1; i < 4; ++i)
         {
-            subir_barrera_entrada();
-            subir_barrera_salida();
+            servo1.write(90);
+            servo2.write(110);
             luz_auto1.encender(VERDE);
             luz_auto2.encender(VERDE);
             luz_auto3.encender(VERDE);
@@ -34,15 +43,16 @@ void loop()
             luz_auto2.apagar(ROJO);
             luz_auto3.apagar(ROJO);
             luz_auto4.apagar(ROJO);
+            delay(1000);
         }
     }
     else
     {
         mostrar_cartel("Clave Inorrecta \n");
-        for (i = 1; 1 < 7; ++i)
+        for (i = 1; i < 7; ++i)
         {
-            bajar_barrera_entrada();
-            bajar_barrera_salida();
+            servo1.write(0);
+            servo2.write(180);
             luz_auto1.encender(VERDE);
             luz_auto2.encender(VERDE);
             luz_auto3.encender(VERDE);

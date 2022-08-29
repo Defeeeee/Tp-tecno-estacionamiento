@@ -27,7 +27,7 @@ void loop()
         delay(5000);
         luz_auto1.apagar(ROJO);
 
-        subir_barrera_entrada();
+        servo1.write(90);
         luz_auto1.encender(VERDE);
         delay(10000);
         servo2.write(90);
@@ -37,11 +37,11 @@ void loop()
         delay(5000);
         luz_auto4.apagar(ROJO);
 
-        subir_barrera_salida();
+        servo1.write(0);
         luz_auto4.encender(VERDE);
         delay(10000);
-        bajar_barrera_salida();
+        servo2.write(180);
         luz_auto4.apagar(VERDE);
 
         i = 3;
-    }
+    }}

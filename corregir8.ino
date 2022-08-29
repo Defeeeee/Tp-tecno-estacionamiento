@@ -1,24 +1,34 @@
 #include <LibEstacionamiento.h>
+#include <Servo.h>
 
+    Servo servo2;
+    Servo servo1;
+     
 void setup()
 {
-    inicializar_sistema();
+  inicializar_sistema(); 
+
+    pinMode(A2, INPUT);
+    pinMode(A3, INPUT);
+
+    servo1.attach(9);
+    servo2.attach(10);
 }
 
 void loop()
 {
-    if (sensor_barrera_entrada.leer() == ACTIVADO && pulsador.leer() == PRESIONADO)
+    if (digitalRead(A2) == LOW && digitalRead(A4) == LOW)
     {
-        subir_barrera_entrada();
+        servo1.write(90);
         delay(10000);
-        bajar_barrera_entrada();
+        servo1.write(0);
     }
 
-    if (sensor_barrera_salida.leer() == ACTIVADO)
+    if (digitalRead(A3) == HIGH)
     {
-        subir_barrera_salida();
+        servo2.write(90);
         delay(10000);
-        bajar_barrera_salida();
+        servo2.write(180);
     }
 
     if (sensor_auto1.leer() == ACTIVADO)

@@ -1,11 +1,18 @@
 #include <LibEstacionamiento.h>
-#include <servo.h>
+#include <Servo.h>
 
 int i;
+
+Servo servo1;
+Servo servo2;
 
 void setup()
 {
     inicializar_sistema();
+    servo1.attach(9);
+    servo2.attach(10);
+    servo1.write(0);
+    servo2.write(0);
 }
 
 void loop()

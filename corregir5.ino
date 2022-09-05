@@ -1,4 +1,5 @@
 #include <LibEstacionamiento.h>
+#include <servo.h>
 
 int i;
 
@@ -17,20 +18,20 @@ void loop()
         delay(5000);
         luz_auto1.apagar(ROJO);
 
-        subir_barrera_entrada();
+        servo2.write(65);
         luz_auto1.encender(VERDE);
         delay(10000);
-        bajar_barrera_entrada();
+        servo2.write(0);
         luz_auto1.apagar(VERDE);
 
         luz_auto4.encender(ROJO);
         delay(5000);
         luz_auto4.apagar(ROJO);
 
-        subir_barrera_salida();
+        servo1.write(90);
         luz_auto4.encender(VERDE);
         delay(10000);
-        bajar_barrera_salida();
+        servo1.write(0);
         luz_auto4.apagar(VERDE);
 
         i = 3;
@@ -38,11 +39,11 @@ void loop()
 
     for (i = 1; i != 11; ++i)
     {
-        subir_barrera_entrada();
-        bajar_barrera_salida();
+        servo2.write(65);
+        servo1.write(0);
         delay(1000);
-        bajar_barrera_entrada();
-        subir_barrera_salida();
+        servo2.write(0);
+        servo1.write(90);
         delay(1000);
     }
 }

@@ -2,6 +2,7 @@
 #include <Servo.h>
 
 int i;
+int ii;
 
 Servo servo1;
 Servo servo2;
@@ -43,8 +44,8 @@ void loop()
 
         i = 3;
     }
-
-    for (i = 1; i != 11; ++i)
+    if (i > 2) {
+    for (ii = 1; ii != 11; ++ii)
     {
         servo2.write(65);
         servo1.write(0);
@@ -52,5 +53,6 @@ void loop()
         servo2.write(0);
         servo1.write(90);
         delay(1000);
+    }
     }
 }

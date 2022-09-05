@@ -26,9 +26,9 @@ void loop()
 
     if (digitalRead(A3) == HIGH)
     {
-        servo2.write(90);
+        servo2.write(65);
         delay(10000);
-        servo2.write(180);
+        servo2.write(0);
     }
 
     if (sensor_auto1.leer() == ACTIVADO)
